@@ -4,35 +4,33 @@
 
 <div class="productList">
 <?php
+include 'my_memcache.php';
 
 function changeRecord($id)
 {
-	$link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
-    mysql_select_db('goods') or die('Не удалось выбрать базу данных');
-    	
-    $ath = mysql_query("SELECT * FROM goods WHERE id = ".$id) or die(mysql_error());
+	$ath = sqlGet("SELECT * FROM goods WHERE id = ".$id);
     
-    if($ath)
-    {
-        while($product = mysql_fetch_array($ath))
-        {
-    		echo '<form action="edit_record.php" method = "post">';
-    		echo '<table>';
-    		echo '<input type="hidden" name="id" value="'.$product['id'].'"/>';
-    		echo '<tr><td>Название товара*: </td><td><input type="text" name="name" value="'.$product['name'].'"/></td></tr>';
-    		echo '<tr><td>Описание товара: </td><td><input type="text" name="description" value="'.$product['description'].'"/></td></tr>';
-    		echo '<tr><td>Цена:            </td><td><input type="text" name="price" value="'.$product['price'].'"/></td></tr>';
-    		echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" value="'.$product['pic'].'"/></td></tr>';
-    		echo '</table>';
-    		echo '<input type="submit" class="my_button" value="Сохранить изменения">';
-    		echo '</form>';
-    	
-        }
-	}
+    echo '<form action="edit_record.php" method = "post">';
+   	echo '<table>';
+   	echo '<input type="hidden" name="id" value="'.$ath[0]['id'].'"/>';
+   	echo '<tr><td>Название товара*: </td><td><input type="text" name="name" value="'.$ath[0]['name'].'"/></td></tr>';
+   	echo '<tr><td>Описание товара: </td><td><input type="text" name="description" value="'.$ath[0]['description'].'"/></td></tr>';
+   	echo '<tr><td>Цена:            </td><td><input type="text" name="price" value="'.$ath[0]['price'].'"/></td></tr>';
+   	echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" value="'.$ath[0]['pic'].'"/></td></tr>';
+   	echo '</table>';
+   	echo '<input type="submit" class="my_button" value="Сохранить изменения">';
+   	echo '</form>';
 }
 
 $link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
 mysql_select_db('goods') or die('Не удалось выбрать базу данных');
+
+$memcache_host='localhost';
+$memcache_port=11211;
+$memcache = new Memcache;
+
+if(!$memcache->pconnect($memcache_host,$memcache_port))
+	die("Memcached не доступен: $memcache_host:$memcache_port");
 
 echo '<div class = "header">';
 echo '<table><tr>';
@@ -52,13 +50,20 @@ if(isset($_POST['name']))
 
     if($newName != "")
     {
-    	$link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
-    	mysql_select_db('goods') or die('Не удалось выбрать базу данных');
+    	$newReqest = 'UPDATE goods SET name = "'.$newName.'"';
     	
-    	$newReqest = 'UPDATE goods SET name = "'.$newName.'", description = "'.$newDescription.'", price = '.$newPrice.', pic = "'.$newPic.'" WHERE id = '.$oldID.';';
+    	if($newDescription != "")
+    		$newReqest .= ', description = "'.$newDescription.'"';
+    	if($newPrice != "")
+    		$newReqest .= ', price = '.$newPrice;
+    	if($newPic != "")
+    		$newReqest .= ', pic = "'.$newPic.'"';
+    	
+    	$newReqest.=' WHERE id = '.$oldID.';';
 	    echo 'Изменения сохранены.<br>';
-    	
-    	$ath = mysql_query($newReqest);
+    	#echo $newReqest;
+
+    	$ath = sqlSet($newReqest);
     	exit();	
     }
     else

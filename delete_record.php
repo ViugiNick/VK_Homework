@@ -4,9 +4,17 @@
 
 <div class="productList">
 <?php
+include 'my_memcache.php';
 
 $link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
 mysql_select_db('goods') or die('Не удалось выбрать базу данных');
+
+$memcache_host='localhost';
+$memcache_port=11211;
+$memcache = new Memcache;
+
+if(!$memcache->pconnect($memcache_host,$memcache_port))
+	die("Memcached не доступен: $memcache_host:$memcache_port");
 
 echo '<div class = "header">';
 echo '<table><tr>';
@@ -23,7 +31,7 @@ if(isset($_POST['delete']))
     
     for($i = 0; $i < $N; $i++)
     {
-      $ath = mysql_query("DELETE FROM goods WHERE id = ".$aDoor[$i].";");
+      $ath = sqlSet("DELETE FROM goods WHERE id = ".$aDoor[$i].";");
       echo 'Товар с id '.$aDoor[$i].' уcпешно удален.<br>';
     }
   }

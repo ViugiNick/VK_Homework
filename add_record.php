@@ -4,7 +4,7 @@
 
 <div class="productList">
 <?php
-
+include 'my_memcache.php';
 /*
 echo '<form action="add_record.php" method = "post">';
 echo '<table>';
@@ -19,12 +19,21 @@ echo '</form>';
 $link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
 mysql_select_db('goods') or die('Не удалось выбрать базу данных');
 
+$memcache_host='localhost';
+$memcache_port=11211;
+$memcache = new Memcache;
+
+if(!$memcache->pconnect($memcache_host,$memcache_port))
+	die("Memcached не доступен: $memcache_host:$memcache_port");
+
+
 echo '<div class = "header">';
 echo '<table><tr>';
 echo '<td><a href="index.php">Вернуться к списку товаров</a></td>';
 echo '</table></tr>';
 echo '</div>';
 echo '<div class = "product">';
+
 if(isset($_POST['name']))
 {
     $newName = htmlspecialchars($_POST["name"]);
@@ -34,9 +43,6 @@ if(isset($_POST['name']))
 
     if($newName != "")
     {
-    	$link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
-    	mysql_select_db('goods') or die('Не удалось выбрать базу данных');
-    	
     	$newReqest = "INSERT INTO goods (name";
 
     	if($newDescription != "")
@@ -57,7 +63,8 @@ if(isset($_POST['name']))
     	$newReqest .= ");";
 
     	echo 'Товар добавлен.<br>';
-    	$ath = mysql_query($newReqest);
+    	$ath = sqlSet($newReqest);
+    	
     	exit();	
     }
     else
