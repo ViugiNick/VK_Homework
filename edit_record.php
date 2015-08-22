@@ -64,7 +64,7 @@
         	
         	$newReqest.=' WHERE id = '.$oldID.';';
     	    echo 'Изменения сохранены.<br>';
-        	echo $newReqest;
+        	#echo $newReqest;
 
         	$ath = sqlSet($newReqest);
         	exit();	
