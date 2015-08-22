@@ -4,88 +4,79 @@
 
 <div class="productList">
 <?php
-include 'my_memcache.php';
-/*
-echo '<form action="add_record.php" method = "post">';
-echo '<table>';
-echo '<tr><td>Название товара*: </td><td><input type="text" name="name" /></td></tr>';
-echo '<tr><td>Описание товара: </td><td><input type="text" name="description" /></td></tr>';
-echo '<tr><td>Цена:            </td><td><input type="text" name="price" /></td></tr>';
-echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" /></td></tr>';
-echo '</table>';
-echo '<input type="submit" value="Добавить товар"> Поле "Название" обязательно для заполнения.';
-echo '</form>';
-*/
-$link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
-mysql_select_db('goods') or die('Не удалось выбрать базу данных');
+    include 'my_memcache.php';
 
-$memcache_host='localhost';
-$memcache_port=11211;
-$memcache = new Memcache;
 
-if(!$memcache->pconnect($memcache_host,$memcache_port))
-	die("Memcached не доступен: $memcache_host:$memcache_port");
+    $link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
+    mysql_select_db('goods') or die('Не удалось выбрать базу данных');
 
-echo '<div class = "header">';
-echo '<div class = "backbutton">';
+    $memcache_host='localhost';
+    $memcache_port=11211;
+    $memcache = new Memcache;
 
-echo '<table><tr>';
-echo '<td><a href="index.php">Вернуться к списку товаров</a></td>';
-echo '</table></tr>';
-echo '</div>';
-echo '</div>';
+    if(!$memcache->pconnect($memcache_host,$memcache_port))
+    	die("Memcached не доступен: $memcache_host:$memcache_port");
 
-echo '<div class = "product">';
+    echo '<div class = "header">';
+    echo '<div class = "backbutton">';
 
-if(isset($_POST['name']))
-{
-    $newName = htmlspecialchars($_POST["name"]);
-    $newDescription = htmlspecialchars($_POST["description"]);
-    $newPrice = htmlspecialchars($_POST["price"]);
-    $newPic = htmlspecialchars($_POST["pic"]);
+    echo '<table><tr>';
+    echo '<td><a href="index.php">Вернуться к списку товаров</a></td>';
+    echo '</table></tr>';
+    echo '</div>';
+    echo '</div>';
 
-    if($newName != "")
+    echo '<div class = "product">';
+
+    if(isset($_POST['name']))
     {
-    	$newReqest = "INSERT INTO goods (name";
+        $newName = htmlspecialchars($_POST["name"]);
+        $newDescription = htmlspecialchars($_POST["description"]);
+        $newPrice = htmlspecialchars($_POST["price"]);
+        $newPic = htmlspecialchars($_POST["pic"]);
 
-    	if($newDescription != "")
-    		$newReqest .= ", description";
-    	if($newPrice != "")
-    		$newReqest .= ", price";
-    	if($newPic != "")
-    		$newReqest .= ", pic";
-    	
-    	$newReqest .= ') VALUES ("'.$newName.'"';
-    	
-    	if($newDescription != "")
-    		$newReqest .= ', "'.$newDescription.'"';
-    	if($newPrice != "")
-    		$newReqest .= ', '.$newPrice;
-    	if($newPic != "")
-    		$newReqest .= ', "'.$newPic.'"';
-    	$newReqest .= ");";
+        if($newName != "")
+        {
+        	$newReqest = "INSERT INTO goods (name";
 
-    	echo 'Товар добавлен.<br>';
-    	$ath = sqlSet($newReqest);
-    	
-    	exit();	
+        	if($newDescription != "")
+        		$newReqest .= ", description";
+        	if($newPrice != "")
+        		$newReqest .= ", price";
+        	if($newPic != "")
+        		$newReqest .= ", pic";
+        	
+        	$newReqest .= ') VALUES ("'.$newName.'"';
+        	
+        	if($newDescription != "")
+        		$newReqest .= ', "'.$newDescription.'"';
+        	if($newPrice != "")
+        		$newReqest .= ', '.$newPrice;
+        	if($newPic != "")
+        		$newReqest .= ', "'.$newPic.'"';
+        	$newReqest .= ");";
+
+        	echo 'Товар добавлен.<br>';
+        	$ath = sqlSet($newReqest);
+        	
+        	exit();	
+        }
+        else
+        {
+        	echo 'Вы не ввели название товара.';
+        }
     }
-    else
-    {
-    	echo 'Вы не ввели название товара.';
-    }
-}
 
-echo '<form action="add_record.php" method = "post">';
-echo '<table>';
-echo '<tr><td>Название товара*: </td><td><input type="text" name="name" /></td></tr>';
-echo '<tr><td>Описание товара: </td><td><input type="text" name="description" /></td></tr>';
-echo '<tr><td>Цена:            </td><td><input type="text" name="price" /></td></tr>';
-echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" /></td></tr>';
-echo '</table>';
-echo '<input type="submit" value="Добавить товар" class="my_button">';
-echo '</form>';
-echo '</div>';
+    echo '<form action="add_record.php" method = "post">';
+    echo '<table>';
+    echo '<tr><td>Название товара*: </td><td><input type="text" name="name" /></td></tr>';
+    echo '<tr><td>Описание товара: </td><td><input type="text" name="description" /></td></tr>';
+    echo '<tr><td>Цена:            </td><td><input type="text" name="price" /></td></tr>';
+    echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" /></td></tr>';
+    echo '</table>';
+    echo '<input type="submit" value="Добавить товар" class="my_button">';
+    echo '</form>';
+    echo '</div>';
 
 ?>
 </div>
