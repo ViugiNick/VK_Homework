@@ -78,6 +78,11 @@
     	color: white;
    	}
 
+   	.backbutton
+   	{
+   		padding-top: 24px;
+		padding-bottom: 24px;
+   	}
 
    	.my_button 
    	{

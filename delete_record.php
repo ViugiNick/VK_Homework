@@ -17,9 +17,12 @@ if(!$memcache->pconnect($memcache_host,$memcache_port))
 	die("Memcached не доступен: $memcache_host:$memcache_port");
 
 echo '<div class = "header">';
+echo '<div class = "backbutton">';
+
 echo '<table><tr>';
 echo '<td><a href="index.php">¬ернутьс€ к списку товаров</a></td>';
 echo '</table></tr>';
+echo '</div>';
 echo '</div>';
 echo '<div class = "product">';
 
