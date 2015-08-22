@@ -1,0 +1,117 @@
+	BODY
+   	{
+   		background-color: #1B2838;
+   		padding: 30px;
+   		color : #c0c0c0;
+   		
+   		font: 12pt sans-serif;
+   	}
+
+   	.productList 
+   	{
+    	height: 800px;
+    	width: 900px; 
+    	border: 1px solid black;
+
+    	background-color: #1F1F1F;
+    	border-radius: 8px;
+    }
+
+    table
+    {
+    	padding: 10px;
+   	}
+
+   	.header
+   	{
+   		background-color: #3C3C3C;
+   		border-radius: 8px 8px 0 0;
+   	}
+
+   	.contents
+    {
+    	margin: 10px;
+    	
+    	background-color: #333333;
+    	border: 1px solid white;
+    }
+
+    .product
+    {
+    	margin: 10px;
+    }
+
+    .name
+    {
+    	font: 14pt sans-serif;
+    }
+
+    .description
+    {
+    	color: #808080;
+    	font: 10pt sans-serif;
+    }
+
+    A
+    {
+    	margin: 10px;
+    	color : #c0c0c0;
+    }
+
+    A:link 
+    { 
+    	text-decoration: none;
+   	} 
+   
+   	A:visited 
+   	{ 
+   		text-decoration: none; 
+   	} 
+   
+   	A:active 
+   	{ 
+   		text-decoration: none; 
+   	}
+   
+   	A:hover 
+   	{
+    	color: white;
+   	}
+
+
+   	.my_button 
+   	{
+  		color: #c0c0c0;
+  		text-decoration: none;
+  		user-select: none;
+  		background: #3C3C3C;
+  		outline: none;
+  		border: none;
+
+  		padding: 10px;
+
+  		font: 12pt sans-serif;
+	} 
+
+	.my_button:hover 
+	{ 
+		outline: none;
+		color : white;
+	}
+	.my_button:active 
+	{ 
+		outline: none;
+	}
+	select 
+	{
+    margin-top: 15px;
+    margin-left: 10px;
+    
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    height: 34px;
+    width: 187px;
+    color : #c0c0c0;
+    appearance: none;
+	}

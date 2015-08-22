@@ -1,13 +1,20 @@
-<style type="text/css">
-   TABLE {
-    border-collapse: collapse;
-    border: 4px solid #000;
-   }
-   TD, TH {
-    padding: 5px;
-    border: 1px solid #000;
-   }
-</style>
+<head>
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<div class="productList">
+
+<script type="text/javascript"> 
+    checkobj = 0;
+ 
+    function checkAvail(obj){ 
+        if(obj.checked) checkobj++; 
+            else checkobj--; 
+        if (checkobj<=0) document.deleting.elements['submit'].disabled = true; 
+            else document.deleting.elements['submit'].disabled = false; 
+    } 
+</script>
+
 <?php
 
 $sortingOrder = 'id';
@@ -20,49 +27,8 @@ if(isset($_POST['order']))
   		$sortingOrder = 'price';	
 }
 
-echo '<form action="index.php" method="post">';
-echo '<select name="order">';
-
-echo '<option ';
-if($sortingOrder == 'id')
-	echo 'selected ';
-echo 'value="id">Сортировать по Id</option>';
-
-echo '<option '; 
-if($sortingOrder == 'price')
-	echo 'selected ';
-
-echo 'value="price">Сортировать по Цене</option>';
-
-echo '</select>';
-echo '<input type="submit" value="Сортировать">';
-echo '</form>';
-
-echo '<form action="add_record.php" method = "post">';
-echo '<table>';
-echo '<tr><td>Название товара*: </td><td><input type="text" name="name" /></td></tr>';
-echo '<tr><td>Описание товара: </td><td><input type="text" name="description" /></td></tr>';
-echo '<tr><td>Цена:            </td><td><input type="text" name="price" /></td></tr>';
-echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" /></td></tr>';
-echo '</table>';
-echo '<input type="submit" value="Добавить товар"> Поле "Название" обязательно для заполнения.';
-echo '</form>';
-
 $link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
 mysql_select_db('goods') or die('Не удалось выбрать базу данных');
-
-if(isset($_POST['delete']))
-{
-  $aDoor = $_POST['delete'];
-  {
-    $N = count($aDoor);
-    
-    for($i = 0; $i < $N; $i++)
-    {
-      $ath = mysql_query("DELETE FROM goods WHERE id = ".$aDoor[$i].";");
-    }
-  }
-}
 
 if($sortingOrder == 'id')
 	$ath = mysql_query("SELECT * FROM goods ORDER BY id ASC;");
@@ -71,26 +37,54 @@ else
 
 if($ath)
 {
-  echo '<form name="deleting" action="index.php" method="post"><input type="submit" value="Удалить выделенные" /><table>';
-  echo "<tr>";
-  echo "<td></td> <td width = 10> Id </td> <td width = 200> Название </td> <td width = 200> Описание </td> <td width = 100> Цена </td> <td width = 200> Картинка </td> </tr>";
+  echo '<div class = "header"><table><tr>';
+  echo '<td><a href="add_record.php">Добавить товар</a></td>';
   
+  
+  echo '<td><input disabled="" type="submit" name="submit" value="Удалить выделенное" class="my_button" form="deleting"></td>';
+  
+  echo '<td><form action="index.php" method="post">';
+  echo '<select name="order" onchange="this.form.submit();">';
+  echo '<option ';
+  if($sortingOrder == 'id')
+  	echo 'selected ';
+  echo 'value="id">Сортировать по Id</option>';
+
+  echo '<option '; 
+  if($sortingOrder == 'price')
+  	echo 'selected ';
+
+  echo 'value="price">Сортировать по Цене</option>';
+
+  echo '</select>';
+  echo '</form></td>';
+
+  echo '<form name="deleting" id="deleting" action="delete_record.php" method="post">';
+
+  echo '</tr></table></div>';
+  
+
+  echo "<table class = 'contents'><tr>";
+  echo "<td width = 20></td> <td width = 50> Id </td> <td width = 610> Товар </td> <td width = 100> Цена </td></tr>";
+  echo '</table>';
+
   while($product = mysql_fetch_array($ath))
   {
-    echo "<tr>";
+    echo "<table class = 'product'><tr>";
     
-	echo '<td><input type="checkbox" name="delete[]" value="'.$product['id'].'" /></td>';
-    echo "<td>".$product['id']."&nbsp;</td>";
-    echo "<td>".$product['name']."&nbsp;</td>";
-    echo "<td>".$product['description']."&nbsp;</td>";
-    echo "<td>".$product['price']."&nbsp;</td>";
-    echo '<td><img src="'.$product['pic'].'" width="100" height="100"></td>';
-    
+	echo '<td width = 20><input type="checkbox" onclick="checkAvail(this)" name="delete[]" value="'.$product['id'].'" /></td>';
+    echo "<td width = 50>".$product['id']."&nbsp;</td>";
+    echo '<td width = 110><img src="'.$product['pic'].'" width="100" height="100"></td>';
+    echo "<td width = 500><div class = 'name'>".$product['name']."&nbsp;</div><div class = 'description'>".$product['description']."</div></td>";
+    echo "<td width = 100>".$product['price']."&nbsp;</td>";
+    echo '<td><a class = "description" href="edit_record.php?value='.$product['id'].'">Edit</a></td>';
+        
  
     echo "</tr>";
+  	echo "</table>";
   }
-  echo '</table></form>';
-
+  echo '</form>';
 }
 
 ?>
+</div>
