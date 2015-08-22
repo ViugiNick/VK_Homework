@@ -55,16 +55,16 @@
         {
         	$newReqest = 'UPDATE goods SET name = "'.$newName.'"';
         	
-        	if($newDescription != "")
-        		$newReqest .= ', description = "'.$newDescription.'"';
+        	$newReqest .= ', description = "'.$newDescription.'"';
+        	
         	if($newPrice != "")
         		$newReqest .= ', price = '.$newPrice;
-        	if($newPic != "")
-        		$newReqest .= ', pic = "'.$newPic.'"';
+        	
+        	$newReqest .= ', pic = "'.$newPic.'"';
         	
         	$newReqest.=' WHERE id = '.$oldID.';';
     	    echo 'Изменения сохранены.<br>';
-        	#echo $newReqest;
+        	echo $newReqest;
 
         	$ath = sqlSet($newReqest);
         	exit();	

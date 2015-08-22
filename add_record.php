@@ -35,7 +35,7 @@
         $newPrice = htmlspecialchars($_POST["price"]);
         $newPic = htmlspecialchars($_POST["pic"]);
 
-        if($newName != "")
+        if($newName != ""  and is_numeric($newPrice))
         {
         	$newReqest = "INSERT INTO goods (name";
 
@@ -57,13 +57,29 @@
         	$newReqest .= ");";
 
         	echo 'Товар добавлен.<br>';
+        	
         	$ath = sqlSet($newReqest);
         	
         	exit();	
         }
         else
         {
-        	echo 'Вы не ввели название товара.';
+        	if($newName == "")
+        		echo 'Вы не ввели название товара.<br>';
+        	if(!is_numeric ($newPrice))
+        		echo 'Цена должна быть числом.<br>';
+        	
+			echo '<form action="add_record.php" method = "post">';
+       		echo '<table>';
+       		echo '<tr><td>Название товара*: </td><td><input type="text" name="name" value="'.$newName.'"/></td></tr>';
+       		echo '<tr><td>Описание товара: </td><td><input type="text" name="description" value="'.$newDescription.'"/></td></tr>';
+       		echo '<tr><td>Цена:            </td><td><input type="text" name="price" value="'.$newPrice.'"/></td></tr>';
+       		echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" value="'.$newPic.'"/></td></tr>';
+       		echo '</table>';
+       		echo '<input type="submit" class="my_button" value="Добавить товар">';
+       		echo '</form>';
+        	
+        	exit();
         }
     }
 
