@@ -48,7 +48,7 @@
     if($ath)
     {
       	echo '<div class = "header"><table><tr>';
-      	echo '<td><a href="add_record.php">Добавить товар.</a></td>';
+      	echo '<td><a href="add_record.php">Добавить товар</a></td>';
       
       
       	echo '<td><form action="index.php" method="post">';
