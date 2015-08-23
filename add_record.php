@@ -58,7 +58,7 @@
 
         	echo 'Товар добавлен.<br>';
         	
-        	$ath = sqlSet($newReqest);
+        	$ath = sqlSet($newReqest, -1);
         	
         	exit();	
         }

@@ -34,7 +34,7 @@
         
         	for($i = 0; $i < $N; $i++)
         	{
-          		$ath = sqlSet("DELETE FROM goods WHERE id = ".$aDoor[$i].";");
+          		$ath = sqlSet("DELETE FROM goods WHERE id = ".$aDoor[$i].";", $aDoor[$i]);
           		echo 'Товар с id '.$aDoor[$i].' уcпешно удален.<br>';
         	}
       	}

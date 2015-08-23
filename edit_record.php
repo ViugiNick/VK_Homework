@@ -8,7 +8,7 @@
 
     function changeRecord($id)
     {
-    	$ath = sqlGet("SELECT * FROM goods WHERE id = ".$id);
+    	$ath = sqlGet("SELECT * FROM goods WHERE id = ".$id.";", $id);
         
         echo '<form action="edit_record.php" method = "post">';
        	echo '<table>';
@@ -66,7 +66,7 @@
     	    echo 'Изменения сохранены.<br>';
         	#echo $newReqest;
 
-        	$ath = sqlSet($newReqest);
+        	$ath = sqlSet($newReqest, $oldID);
         	exit();	
         }
         else

@@ -24,10 +24,16 @@
         return $resource;      
 	}
 
-	function sqlSet($query)
+	function sqlSet($query, $id)
 	{
 		global $memcache;
-		$memcache->flush();
+		$memcache->delete("SELECT * FROM goods ORDER BY id ASC;");
+		$memcache->delete("SELECT * FROM goods ORDER BY price ASC;");
+
+		if($id != -1)
+		{
+			$memcache->delete("SELECT * FROM goods WHERE id = ".$id.";");
+		}
 
 		return sqlQuery($query);
 	}
@@ -38,13 +44,13 @@
 
         if($result !== false)
         {
-        	#echo "<b>Попадание в кеш:</b> $query<br>";
+        	echo "<b>Попадание в кеш:</b> $query<br>";
             #echo $result;
             return $result;
         }
         else
         {
-        	#echo "<b>Кеш не сработал:</b> $query<br>";
+        	echo "<b>Кеш не сработал:</b> $query<br>";
 
             $resource = sqlQuery($query);
         	#$result = array();       
