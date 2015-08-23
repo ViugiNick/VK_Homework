@@ -44,13 +44,13 @@
 
         if($result !== false)
         {
-        	echo "<b>Попадание в кеш:</b> $query<br>";
+        	#echo "<b>Попадание в кеш:</b> $query<br>";
             #echo $result;
             return $result;
         }
         else
         {
-        	echo "<b>Кеш не сработал:</b> $query<br>";
+        	#echo "<b>Кеш не сработал:</b> $query<br>";
 
             $resource = sqlQuery($query);
         	#$result = array();       
