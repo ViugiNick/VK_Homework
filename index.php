@@ -45,38 +45,38 @@
     	#$ath = mysql_query("SELECT * FROM goods ORDER BY price ASC;");
     	$ath = sqlGet("SELECT * FROM goods ORDER BY price ASC;");
 
+    echo '<div class = "header"><table><tr>';
+   	echo '<td><a href="add_record.php">Добавить товар</a></td>';
+   
+   
+   	echo '<td><form action="index.php" method="post">';
+  	echo '<select name="order" onchange="this.form.submit();">';
+   	echo '<option ';
+   	if($sortingOrder == 'id')
+   		echo 'selected ';
+   	echo 'value="id">Сортировать по Id</option>';
+
+   	echo '<option '; 
+   	if($sortingOrder == 'price')
+   		echo 'selected ';
+
+   	echo 'value="price">Сортировать по Цене</option>';
+
+   	echo '</select>';
+   	echo '</form></td>';
+   	echo '<td><input hidden=true type="submit" name="submit" value="Удалить выделенное" class="my_button" form="deleting"></td>';
+   
+   	echo '<form name="deleting" id="deleting" action="delete_record.php" method="post">';
+
+   	echo '</tr></table></div>';
+    
+    echo "<table class = 'contents'><tr>";
+    echo "<td width = 20></td> <td width = 50> Id </td> <td width = 610> Товар </td> <td width = 100> Цена </td></tr>";
+    echo '</table>';
+    
     if($ath)
     {
-      	echo '<div class = "header"><table><tr>';
-      	echo '<td><a href="add_record.php">Добавить товар</a></td>';
-      
-      
-      	echo '<td><form action="index.php" method="post">';
-     	echo '<select name="order" onchange="this.form.submit();">';
-      	echo '<option ';
-      	if($sortingOrder == 'id')
-      		echo 'selected ';
-      	echo 'value="id">Сортировать по Id</option>';
-
-      	echo '<option '; 
-      	if($sortingOrder == 'price')
-      		echo 'selected ';
-
-      	echo 'value="price">Сортировать по Цене</option>';
-
-      	echo '</select>';
-      	echo '</form></td>';
-      	echo '<td><input hidden=true type="submit" name="submit" value="Удалить выделенное" class="my_button" form="deleting"></td>';
-      
-      	echo '<form name="deleting" id="deleting" action="delete_record.php" method="post">';
-
-      	echo '</tr></table></div>';
-      
-
-      	echo "<table class = 'contents'><tr>";
-     	echo "<td width = 20></td> <td width = 50> Id </td> <td width = 610> Товар </td> <td width = 100> Цена </td></tr>";
-      	echo '</table>';
-
+      	
       	$i = 0;
       	while($i < count($ath))
       	{	
