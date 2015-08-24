@@ -1,5 +1,5 @@
 <head>
-  <link href="style.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
 </head>
 
 <div class="productList">
@@ -7,8 +7,8 @@
     include 'my_memcache.php';
 
 
-    $link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
-    mysql_select_db('goods') or die('Не удалось выбрать базу данных');
+    $link = mysql_connect('localhost', 'nfuogibo', '---') or die('Не удалось соединиться: ' . mysql_error());
+    mysql_select_db('nfuogibo_goods') or die('Не удалось выбрать базу данных nfuogibo_goods');
 
     $memcache_host='localhost';
     $memcache_port=11211;
@@ -30,10 +30,10 @@
 
     if(isset($_POST['name']))
     {
-        $newName = htmlspecialchars($_POST["name"]);
-        $newDescription = htmlspecialchars($_POST["description"]);
-        $newPrice = htmlspecialchars($_POST["price"]);
-        $newPic = htmlspecialchars($_POST["pic"]);
+        $newName = $_POST["name"];
+        $newDescription = $_POST["description"];
+        $newPrice = $_POST["price"];
+        $newPic = $_POST["pic"];
 
         if($newName != ""  and is_numeric($newPrice))
         {
@@ -76,7 +76,7 @@
        		echo '<tr><td>Цена:            </td><td><input type="text" name="price" value="'.$newPrice.'"/></td></tr>';
        		echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" value="'.$newPic.'"/></td></tr>';
        		echo '</table>';
-       		echo '<input type="submit" class="my_button" value="Добавить товар">';
+       		echo '<input type="submit" value="Добавить товар" class="my_button">';
        		echo '</form>';
         	
         	exit();

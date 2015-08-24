@@ -1,13 +1,13 @@
 <head>
-  <link href="style.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
 </head>
 
 <div class="productList">
 <?php
     include 'my_memcache.php';
 
-    $link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
-    mysql_select_db('goods') or die('Не удалось выбрать базу данных');
+    $link = mysql_connect('localhost', 'nfuogibo', '---') or die('Не удалось соединиться: ' . mysql_error());
+    mysql_select_db('nfuogibo_goods') or die('Не удалось выбрать базу данных nfuogibo_goods');
 
     $memcache_host='localhost';
     $memcache_port=11211;
@@ -24,6 +24,7 @@
     echo '</table></tr>';
     echo '</div>';
     echo '</div>';
+
     echo '<div class = "product">';
 
     if(isset($_POST['delete']))

@@ -1,5 +1,5 @@
 <head>
-  <link href="style.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
 </head>
 
 <div class="productList">
@@ -28,14 +28,14 @@
       		$sortingOrder = 'price';	
     }
 
-    $link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
-    mysql_select_db('goods') or die('Не удалось выбрать базу данных');
+    $link = mysql_connect('localhost', 'nfuogibo', '---') or die('Не удалось соединиться: ' . mysql_error());
+    mysql_select_db('nfuogibo_goods') or die('Не удалось выбрать базу данных nfuogibo_goods');
 
     $memcache_host='localhost';
     $memcache_port=11211;
     $memcache = new Memcache;
 
-    if(!$memcache->pconnect($memcache_host,$memcache_port))
+    if(!$memcache->connect($memcache_host,$memcache_port))
     	die("Memcached не доступен: $memcache_host:$memcache_port");
 
     if($sortingOrder == 'id')

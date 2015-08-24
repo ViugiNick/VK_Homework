@@ -1,5 +1,5 @@
 <head>
-  <link href="style.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
 </head>
 
 <div class="productList">
@@ -22,8 +22,8 @@
        	echo '</form>';
     }
 
-    $link = mysql_connect('localhost', 'root', 'user') or die('Не удалось соединиться: ' . mysql_error());
-    mysql_select_db('goods') or die('Не удалось выбрать базу данных');
+    $link = mysql_connect('localhost', 'nfuogibo', '---') or die('Не удалось соединиться: ' . mysql_error());
+    mysql_select_db('nfuogibo_goods') or die('Не удалось выбрать базу данных nfuogibo_goods');
 
     $memcache_host='localhost';
     $memcache_port=11211;
@@ -40,16 +40,17 @@
     echo '</table></tr>';
     echo '</div>';
     echo '</div>';
+
     echo '<div class = "product">';
 
     if(isset($_POST['name']))
     {
-        $oldID = htmlspecialchars($_POST["id"]);
+        $oldID = $_POST["id"];
         
-        $newName = htmlspecialchars($_POST["name"]);
-        $newDescription = htmlspecialchars($_POST["description"]);
-        $newPrice = htmlspecialchars($_POST["price"]);
-        $newPic = htmlspecialchars($_POST["pic"]);
+        $newName = $_POST["name"];
+        $newDescription = $_POST["description"];
+        $newPrice = $_POST["price"];
+        $newPic = $_POST["pic"];
 
         if($newName != "" and is_numeric($newPrice))
         {

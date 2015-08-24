@@ -1,17 +1,17 @@
-	BODY
-   	{
-   		background-color: #1B2838;
-   		padding: 30px;
-   		color : #c0c0c0;
-   		
-   		font: 12pt sans-serif;
-   	}
-
-   	.productList 
-   	{
-    	width: 900px; 
-        height: auto;
+    BODY
+    {
+    	background-color: #1B2838;
+    	padding: 30px;
+    	color : #c0c0c0;
     	
+    	font: 12pt sans-serif;
+    }
+
+    .productList 
+    {
+    	width: 900px; 
+    	height: auto;
+
     	border: 1px solid black;
 
     	background-color: #1F1F1F;
@@ -21,15 +21,16 @@
     table
     {
     	padding: 10px;
-   	}
+    }
 
-   	.header
-   	{
-   		background-color: #3C3C3C;
-   		border-radius: 8px 8px 0 0;
-   	}
+    .header
+    {
+    	background-color: #3C3C3C;
+    	border-radius: 8px 8px 0 0;
+    }
 
-   	.contents
+
+    .contents
     {
     	margin: 10px;
     	
@@ -62,57 +63,57 @@
     A:link 
     { 
     	text-decoration: none;
-   	} 
-   
-   	A:visited 
-   	{ 
-   		text-decoration: none; 
-   	} 
-   
-   	A:active 
-   	{ 
-   		text-decoration: none; 
-   	}
-   
-   	A:hover 
-   	{
+    } 
+
+    A:visited 
+    { 
+    	text-decoration: none; 
+    } 
+
+    A:active 
+    { 
+    	text-decoration: none; 
+    }
+
+    A:hover 
+    {
     	color: white;
-   	}
+    }
 
-   	.backbutton
-   	{
-   		padding-top: 24px;
-		padding-bottom: 24px;
-   	}
+    .backbutton
+    {
+    	padding-top: 24px;
+    	padding-bottom: 24px;
+    }
 
-   	.my_button 
-   	{
-  		color: #c0c0c0;
-  		text-decoration: none;
-  		user-select: none;
-  		background: #3C3C3C;
-  		outline: none;
-  		border: none;
+    .my_button 
+    {
+    	color: #c0c0c0;
+    	text-decoration: none;
+    	user-select: none;
+    	background: #3C3C3C;
+    	outline: none;
+    	border: none;
 
-  		padding: 10px;
+    	padding: 10px;
 
-  		font: 12pt sans-serif;
-	} 
+    	font: 12pt sans-serif;
+    } 
 
-	.my_button:hover 
-	{ 
-		outline: none;
-		color : white;
-	}
-	.my_button:active 
-	{ 
-		outline: none;
-	}
-	select 
-	{
+    .my_button:hover 
+    { 
+    	outline: none;
+    	color : white;
+    }
+    .my_button:active 
+    { 
+    	outline: none;
+    }
+    select 
+    {
     	margin-top: 15px;
     	margin-left: 10px;
-    
+
     	border: none;
     	background: transparent;
     	font-size: 16px;
@@ -120,4 +121,4 @@
     	width: 187px;
     	color : #c0c0c0;
     	appearance: none;
-	}
+    }
