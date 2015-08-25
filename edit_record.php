@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <head>
 	<link href="style.css" rel="stylesheet">
 </head>
@@ -17,12 +18,13 @@
        	echo '<tr><td>Описание товара: </td><td><input type="text" name="description" value="'.$ath[0]['description'].'"/></td></tr>';
        	echo '<tr><td>Цена:            </td><td><input type="text" name="price" value="'.$ath[0]['price'].'"/></td></tr>';
        	echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" value="'.$ath[0]['pic'].'"/></td></tr>';
+       	echo '<tr><td><input type="submit" class="my_button" value="Сохранить изменения"></td></tr>';
        	echo '</table>';
-       	echo '<input type="submit" class="my_button" value="Сохранить изменения">';
+       	
        	echo '</form>';
     }
 
-    $link = mysql_connect('localhost', 'nfuogibo', '---') or die('Не удалось соединиться: ' . mysql_error());
+    $link = mysql_connect('localhost', 'nfuogibo', 'T6iT0i0a1j') or die('Не удалось соединиться: ' . mysql_error());
     mysql_select_db('nfuogibo_goods') or die('Не удалось выбрать базу данных nfuogibo_goods');
 
     $memcache_host='localhost';
@@ -33,12 +35,14 @@
     	die("Memcached не доступен: $memcache_host:$memcache_port");
 
     echo '<div class = "header">';
-    echo '<div class = "backbutton">';
-
-    echo '<table><tr>';
-    echo '<td><a href="index.php">Вернуться к списку товаров</a></td>';
-    echo '</table></tr>';
-    echo '</div>';
+    echo '<table class = "menu"><tr>';
+    
+    echo '<td class = "menu">';
+    echo '<a href="index.php">Вернуться к списку товаров</a>';
+    echo '</td>';
+    
+    echo '</tr></table>';
+    
     echo '</div>';
 
     echo '<div class = "product">';
@@ -84,8 +88,8 @@
        		echo '<tr><td>Описание товара: </td><td><input type="text" name="description" value="'.$newDescription.'"/></td></tr>';
        		echo '<tr><td>Цена:            </td><td><input type="text" name="price" value="'.$newPrice.'"/></td></tr>';
        		echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" value="'.$newPic.'"/></td></tr>';
+       		echo '<tr><td><input type="submit" class="my_button" value="Сохранить изменения"></td></tr>';
        		echo '</table>';
-       		echo '<input type="submit" class="my_button" value="Сохранить изменения">';
        		echo '</form>';
         	exit();
         }

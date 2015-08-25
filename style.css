@@ -1,7 +1,7 @@
     BODY
     {
     	background-color: #1B2838;
-    	padding: 30px;
+    	padding: 50px;
     	color : #c0c0c0;
     	
     	font: 12pt sans-serif;
@@ -20,27 +20,38 @@
 
     table
     {
+    	margin: 10px;
+    }
+
+    .product
+    {
     	padding: 10px;
+    	
     }
 
     .header
     {
     	background-color: #3C3C3C;
     	border-radius: 8px 8px 0 0;
+    	height: 70px;
     }
-
+    
+    table.menu
+    {
+    	margin: -10px;
+    	margin-left: 20px;
+    }
+    
+    td.menu
+    {
+    	height: 60px;
+    	width: 210px;
+    }
 
     .contents
     {
-    	margin: 10px;
-    	
     	background-color: #333333;
     	border: 1px solid white;
-    }
-
-    .product
-    {
-    	margin: 10px;
     }
 
     .name
@@ -55,9 +66,11 @@
     }
 
     A
-    {
-    	margin: 10px;
+    {   
+    	vertical-align: middle;
+    	
     	color : #c0c0c0;
+    	font: 12pt sans-serif;
     }
 
     A:link 
@@ -80,14 +93,9 @@
     	color: white;
     }
 
-    .backbutton
-    {
-    	padding-top: 24px;
-    	padding-bottom: 24px;
-    }
-
     .my_button 
     {
+    	vertical-align: middle;
     	color: #c0c0c0;
     	text-decoration: none;
     	user-select: none;
@@ -96,10 +104,9 @@
     	border: none;
 
     	padding: 10px;
-
     	font: 12pt sans-serif;
     } 
-
+    
     .my_button:hover 
     { 
     	outline: none;
@@ -111,9 +118,7 @@
     }
     select 
     {
-    	margin-top: 15px;
-    	margin-left: 10px;
-
+    	vertical-align: middle;
     	border: none;
     	background: transparent;
     	font-size: 16px;

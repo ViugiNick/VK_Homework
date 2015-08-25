@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <head>
 	<link href="style.css" rel="stylesheet">
 </head>
@@ -28,7 +29,7 @@
       		$sortingOrder = 'price';	
     }
 
-    $link = mysql_connect('localhost', 'nfuogibo', '---') or die('Не удалось соединиться: ' . mysql_error());
+    $link = mysql_connect('localhost', 'nfuogibo', 'T6iT0i0a1j') or die('Не удалось соединиться: ' . mysql_error());
     mysql_select_db('nfuogibo_goods') or die('Не удалось выбрать базу данных nfuogibo_goods');
 
     $memcache_host='localhost';
@@ -45,11 +46,18 @@
     	#$ath = mysql_query("SELECT * FROM goods ORDER BY price ASC;");
     	$ath = sqlGet("SELECT * FROM goods ORDER BY price ASC;");
 
-    echo '<div class = "header"><table><tr>';
-   	echo '<td><a href="add_record.php">Добавить товар</a></td>';
-   
-   
-   	echo '<td><form action="index.php" method="post">';
+    echo '<div class = "header">';
+    
+    echo '<div></div>';
+
+    echo '<table class="menu"><tr>';
+    
+    echo '<td class="menu">';
+   	echo '<a href="add_record.php">Добавить товар</a>';
+   	echo '</td>';
+
+   	echo '<td class="menu">';
+   	echo '<form action="index.php" method="post">';
   	echo '<select name="order" onchange="this.form.submit();">';
    	echo '<option ';
    	if($sortingOrder == 'id')
@@ -63,14 +71,18 @@
    	echo 'value="price">Сортировать по Цене</option>';
 
    	echo '</select>';
-   	echo '</form></td>';
-   	echo '<td><input hidden=true type="submit" name="submit" value="Удалить выделенное" class="my_button" form="deleting"></td>';
+   	echo '</form>';
+   	echo '</td>';
+
+   	echo '<td class="menu">';
+   	echo '<input hidden=true type="submit" name="submit" value="Удалить выделенное" class="my_button" form="deleting">';
    
    	echo '<form name="deleting" id="deleting" action="delete_record.php" method="post">';
-
-   	echo '</tr></table></div>';
+   	echo '</td>';
+   	echo '</tr></table>';
+   	echo '</div>';
     
-    echo "<table class = 'contents'><tr>";
+        echo "<table class = 'contents'><tr>";
     echo "<td width = 20></td> <td width = 50> Id </td> <td width = 610> Товар </td> <td width = 100> Цена </td></tr>";
     echo '</table>';
     

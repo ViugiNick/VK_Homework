@@ -1,0 +1,8 @@
+[25-Aug-2015 03:11:30 Europe/Moscow] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /home/nfuogibo/public_html/add_record.php on line 29
+[25-Aug-2015 03:11:37 Europe/Moscow] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /home/nfuogibo/public_html/add_record.php on line 29
+[25-Aug-2015 03:11:41 Europe/Moscow] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /home/nfuogibo/public_html/edit_record.php on line 44
+[25-Aug-2015 03:12:00 Europe/Moscow] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /home/nfuogibo/public_html/add_record.php on line 29
+[25-Aug-2015 03:12:32 Europe/Moscow] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /home/nfuogibo/public_html/add_record.php on line 29
+[25-Aug-2015 03:12:59 Europe/Moscow] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /home/nfuogibo/public_html/add_record.php on line 29
+[25-Aug-2015 03:13:41 Europe/Moscow] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /home/nfuogibo/public_html/delete_record.php on line 27
+[25-Aug-2015 03:14:09 Europe/Moscow] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /home/nfuogibo/public_html/add_record.php on line 29
