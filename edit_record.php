@@ -14,17 +14,17 @@
         echo '<form action="edit_record.php" method = "post">';
        	echo '<table>';
        	echo '<input type="hidden" name="id" value="'.$ath[0]['id'].'"/>';
-       	echo '<tr><td>Название товара*: </td><td><input type="text" name="name" value="'.$ath[0]['name'].'"/></td></tr>';
-       	echo '<tr><td>Описание товара: </td><td><input type="text" name="description" value="'.$ath[0]['description'].'"/></td></tr>';
-       	echo '<tr><td>Цена:            </td><td><input type="text" name="price" value="'.$ath[0]['price'].'"/></td></tr>';
-       	echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" value="'.$ath[0]['pic'].'"/></td></tr>';
+       	echo '<tr><td>Название товара*: </td><td><input type="text" size="30" name="name" value="'.$ath[0]['name'].'"/></td></tr>';
+       	echo '<tr><td>Описание товара: </td><td><input type="text" size="30" name="description" value="'.$ath[0]['description'].'"/></td></tr>';
+       	echo '<tr><td>Цена:            </td><td><input type="text" size="30" name="price" value="'.$ath[0]['price'].'"/></td></tr>';
+       	echo '<tr><td>Картинка:        </td><td><input type="text" size="30" name="pic" value="'.$ath[0]['pic'].'"/></td></tr>';
        	echo '<tr><td><input type="submit" class="my_button" value="Сохранить изменения"></td></tr>';
        	echo '</table>';
        	
        	echo '</form>';
     }
 
-    $link = mysql_connect('localhost', 'nfuogibo', '---') or die('Не удалось соединиться: ' . mysql_error());
+    $link = mysql_connect('localhost', 'nfuogibo', 'T6iT0i0a1j') or die('Не удалось соединиться: ' . mysql_error());
     mysql_select_db('nfuogibo_goods') or die('Не удалось выбрать базу данных nfuogibo_goods');
 
     $memcache_host='localhost';
@@ -84,10 +84,10 @@
         	echo '<form action="edit_record.php" method = "post">';
        		echo '<table>';
        		echo '<input type="hidden" name="id" value="'.$oldID.'"/>';
-       		echo '<tr><td>Название товара*: </td><td><input type="text" name="name" value="'.$newName.'"/></td></tr>';
-       		echo '<tr><td>Описание товара: </td><td><input type="text" name="description" value="'.$newDescription.'"/></td></tr>';
-       		echo '<tr><td>Цена:            </td><td><input type="text" name="price" value="'.$newPrice.'"/></td></tr>';
-       		echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" value="'.$newPic.'"/></td></tr>';
+       		echo '<tr><td>Название товара*: </td><td><input type="text" size="30" name="name" value="'.$newName.'"/></td></tr>';
+       		echo '<tr><td>Описание товара: </td><td><input type="text" size="30" name="description" value="'.$newDescription.'"/></td></tr>';
+       		echo '<tr><td>Цена:            </td><td><input type="text" size="30" name="price" value="'.$newPrice.'"/></td></tr>';
+       		echo '<tr><td>Картинка:        </td><td><input type="text" size="30" name="pic" value="'.$newPic.'"/></td></tr>';
        		echo '<tr><td><input type="submit" class="my_button" value="Сохранить изменения"></td></tr>';
        		echo '</table>';
        		echo '</form>';

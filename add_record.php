@@ -9,7 +9,7 @@
     include 'my_memcache.php';
 
 
-    $link = mysql_connect('localhost', 'nfuogibo', '---') or die('Не удалось соединиться: ' . mysql_error());
+    $link = mysql_connect('localhost', 'nfuogibo', 'T6iT0i0a1j') or die('Не удалось соединиться: ' . mysql_error());
     mysql_select_db('nfuogibo_goods') or die('Не удалось выбрать базу данных nfuogibo_goods');
 
     $memcache_host='localhost';
@@ -75,10 +75,10 @@
         	
 			echo '<form action="add_record.php" method = "post">';
        		echo '<table>';
-       		echo '<tr><td>Название товара*: </td><td><input type="text" name="name" value="'.$newName.'"/></td></tr>';
-       		echo '<tr><td>Описание товара: </td><td><input type="text" name="description" value="'.$newDescription.'"/></td></tr>';
-       		echo '<tr><td>Цена:            </td><td><input type="text" name="price" value="'.$newPrice.'"/></td></tr>';
-       		echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" value="'.$newPic.'"/></td></tr>';
+       		echo '<tr><td>Название товара*: </td><td><input type="text" size="30" name="name" value="'.$newName.'"/></td></tr>';
+       		echo '<tr><td>Описание товара: </td><td><input type="text" size="30" name="description" value="'.$newDescription.'"/></td></tr>';
+       		echo '<tr><td>Цена:            </td><td><input type="text" size="30" name="price" value="'.$newPrice.'"/></td></tr>';
+       		echo '<tr><td>Картинка:        </td><td><input type="text" size="30" name="pic" value="'.$newPic.'"/></td></tr>';
        		echo '<tr><td><input type="submit" value="Добавить товар" class="my_button"></td></tr>';
        		
        		echo '</table>';
@@ -90,10 +90,10 @@
 
     echo '<form action="add_record.php" method = "post">';
     echo '<table>';
-    echo '<tr><td>Название товара*: </td><td><input type="text" name="name" /></td></tr>';
-    echo '<tr><td>Описание товара: </td><td><input type="text" name="description" /></td></tr>';
-    echo '<tr><td>Цена:            </td><td><input type="text" name="price" /></td></tr>';
-    echo '<tr><td>Картинка:        </td><td><input type="text" name="pic" /></td></tr>';
+    echo '<tr><td>Название товара*: </td><td><input type="text" size="30" name="name" /></td></tr>';
+    echo '<tr><td>Описание товара: </td><td><input type="text" size="30" name="description" /></td></tr>';
+    echo '<tr><td>Цена:            </td><td><input type="text" size="30" name="price" /></td></tr>';
+    echo '<tr><td>Картинка:        </td><td><input type="text" size="30" name="pic" /></td></tr>';
     echo '<tr><td><input type="submit" value="Добавить товар" class="my_button"></td></tr>';
     echo '</table>';
     echo '</form>';
