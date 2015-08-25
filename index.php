@@ -29,7 +29,7 @@
       		$sortingOrder = 'price';	
     }
 
-    $link = mysql_connect('localhost', 'nfuogibo', 'T6iT0i0a1j') or die('Не удалось соединиться: ' . mysql_error());
+    $link = mysql_connect('localhost', 'nfuogibo', '---') or die('Не удалось соединиться: ' . mysql_error());
     mysql_select_db('nfuogibo_goods') or die('Не удалось выбрать базу данных nfuogibo_goods');
 
     $memcache_host='localhost';
